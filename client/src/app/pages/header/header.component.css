@@ -1,0 +1,14 @@
+.toolbar {
+  flex: auto;
+  position: fixed;
+  top: 0px;
+  z-index: 3;
+}
+
+
+.header {
+/* background-color: #3F51B5; */
+/* color: hotpink; */
+background-color: white;
+color: #3F51B5;
+}

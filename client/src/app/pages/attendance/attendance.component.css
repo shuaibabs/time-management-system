@@ -1,0 +1,64 @@
+.title {
+  font-size: 26px;
+  color: midnightblue;
+  font-weight: 500;
+}
+
+.clock {
+  text-align: right;
+  font-size: 18px;
+  color: orangered;
+  font-weight: 400;
+}
+
+.notif-msg {
+  text-align: center;
+  font-size: 12px;
+  color: red;
+  font-weight: 300;
+}
+
+.btn-checkin {
+  background-color: greenyellow;
+}
+
+.btn-checkout {
+  background-color: pink;
+}
+
+.absent {
+  background-color: lightgrey;
+}
+
+.check-in {
+  color: greenyellow;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.check-out {
+  color: pink;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.set {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.orange {
+  color: orange;
+}
+
+.yellow {
+  color: yellow;
+}

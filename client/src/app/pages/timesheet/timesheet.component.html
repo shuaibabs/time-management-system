@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12 d-flex justify-content-center">
+          <span class="notif-msg">
+              {{notificationMsg}}
+          </span>
+      </div>
+  </div>
+  <br>
+  <div class="row" style="font-size: 16px; color: red;">
+      <div class="col">From: <span style="color: black;">{{currentDateWeekJSON.Mond}}</span> </div>
+      <div class="col">TO:<span style="color: black;"> {{currentDateWeekJSON.Sund}}</span> </div>
+      <div class="col">Today: <span style="color: black;"> {{ currentDateWeekJSON.currentday }} </span></div>
+      <div class="col">Employee ID:<span style="color: black;"> {{ allUserData.userid }} </span> </div>
+      <div class="col">Name:<span style="color: black;"> {{ allUserData.full_name }} </span></div>
+      <!-- <button mat-stroked-button (click)="postdata()" style="text-align: right;background-color: rgb(247, 171, 30);color: white;">Submit</button> -->
+  </div>
+
+  <br>
+
+  <div class="row justify-content-center" style="width: 100%;">
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="rowNo">
+              <th mat-header-cell *matHeaderCellDef> rowNo </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="S.No" [(ngModel)]="element.rowNo"> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="project" style="min-width: 150px;">
+              <th mat-header-cell *matHeaderCellDef for="Project">Project</th>
+              <td mat-cell *matCellDef="let element">
+                  <select class="form-control input-lg" [(ngModel)]="element.project"
+                      (change)="projectChangeEvent(element.rowNo, element.project)">
+                      <option *ngFor="let proj of element.projects;" value="{{proj}}"> {{proj}}
+                      </option>
+                  </select>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="module" style="min-width: 150px;">
+              <th mat-header-cell *matHeaderCellDef for="module"> Module </th>
+              <td mat-cell *matCellDef="let element">
+                  <select  class="form-control input-lg" *ngIf="element.projects" [(ngModel)]="element.module"
+                  (change)="ModuleChangeEvent(element.rowNo,  element.module)">
+                      <option *ngFor="let mod of element.modules;" value="{{mod}}">{{mod}}
+                      </option>
+                  </select>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="subModule" style="min-width: 150px;">
+              <th mat-header-cell *matHeaderCellDef for="sub_module"> Sub-Module </th>
+              <td mat-cell *matCellDef="let element">
+                  <select class="form-control input-lg" *ngIf="element.sub_modules" [(ngModel)]="element.sub_module"
+                      (change)="subModuleChangeEvent(element.rowNo, element.sub_module)" >
+                      <option *ngFor="let subModule of element.sub_modules" value={{subModule}}>
+                          {{subModule}}
+                      </option>
+                  </select>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="task" style="min-width: 150px;">
+              <th mat-header-cell *matHeaderCellDef> Task </th>
+              <td mat-cell *matCellDef="let element">
+                  <select [(ngModel)]="element.task"  class="form-control input-lg"
+                      (change)="subModuleChangeEvent(element.rowNo, element.sub_module)">
+                      <option *ngFor="let task of element.tasks" value={{task}}> {{task}}</option>
+                  </select>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="remarks" style="min-width: 150px;">
+              <th mat-header-cell *matHeaderCellDef> Remarks </th>
+              <td mat-cell *matCellDef="let element">
+                  <textarea placeholder="Remarks" [(ngModel)]="element.remarks" style="height: 32px;"></textarea>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="monday">
+              <th mat-header-cell *matHeaderCellDef> Mon </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                <mat-accordion><mat-expansion-panel></mat-expansion-panel></mat-accordion>
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.mon">
+                   </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tuesday">
+              <th mat-header-cell *matHeaderCellDef> Tue </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.tue"> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="wednesday">
+              <th mat-header-cell *matHeaderCellDef> Wed </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.wed"> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="thrusday">
+              <th mat-header-cell *matHeaderCellDef> Thr </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.thu"> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="friday">
+              <th mat-header-cell *matHeaderCellDef> Fri </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.fri"> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="saturday">
+              <th mat-header-cell *matHeaderCellDef> Sat </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.sat"> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sunday">
+              <th mat-header-cell *matHeaderCellDef> Sun </th>
+              <td mat-cell *matCellDef="let element" style="width: 50px;">
+                  <input mat-input style="width: 45px;" placeholder="Hours" [(ngModel)]="element.sun"></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+  </div>
+
+  <button mat-stroked-button (click)="submitClick()" style="float: right;background-color: rgb(247, 171, 30);color: white;">Submit
+  </button>
+
+</div>

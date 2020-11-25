@@ -1,0 +1,58 @@
+<br>
+
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+
+    <div class="col-sm-12 col-md-8 col-lg-8 d-flex justify-content-center">
+      <mat-card style="width: 100%; height: 100%; background-color: honeydew;">
+      <iframe src="https://www.gindowa.com" width="100%" height="100%"></iframe>
+    </mat-card>
+    </div>
+
+
+    <div class="col-sm-12 col-md-4 col-lg-4  justify-content-center">
+      <mat-card style="width: 100%; height: 100%;">
+      <div class="row justify-content-center">
+        <img  src='../../../assets/images/img.png' style="align-items: center;">
+      </div>
+      <div class="row justify-content-center">
+        <!-- <span class="justify-content-center" style="color: green; font-weight: 400; font-size: 18px;" name="brandMsg" ngModel [(ngModel)]="brandMsg" > {{brandMsg}}</span> -->
+      </div>
+
+      <br>
+      <br>
+      <div class="row justify-content-center">
+        <!-- <span class="justify-content-center" style="color: red; font-weight: 200;" name="errorMsg" ngModel [(ngModel)]="errorMsg" >{{errorMsg}} </span> -->
+      </div>
+
+      <br>
+      <br>
+      <mat-card class="width-full justify-content-center" style="background-color: khaki;">
+        <form class="width-full">
+          <mat-form-field class="width-full">
+            <input matInput type="text" name="userName" ngModel [(ngModel)]="data.username"
+              [ngModelOptions]="{standalone: true}" placeholder="User Name/ID" required #userName="ngModel">
+            <mat-error *ngIf="userName.invalid">Please enter a valid User Name/ID.</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="width-full">
+            <input matInput type="password" name="passkey" ngModel [(ngModel)]="data.password"
+              [ngModelOptions]="{standalone: true}" placeholder="Password/Key" required #passKey="ngModel">
+          </mat-form-field>
+
+          <br>
+          <div>
+            <button mat-raised-button color="primary" (click)="login_click()" type="submit">Login</button>
+            <button mat-raised-button color="warn" style="float: right;" routerLink='' routerLinkActive="active"
+              type="submit">Cancel</button>
+          </div>
+          <br>
+          <a href="" class="login-forgot" color="accent">Forgot User ID/Password?</a>
+        </form>
+      </mat-card>
+    </mat-card>
+    </div>
+
+
+  </div>
+</div>
